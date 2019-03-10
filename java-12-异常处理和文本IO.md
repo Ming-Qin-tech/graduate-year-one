@@ -7,4 +7,24 @@
 * 异常（Exception）
 * 调用方法的语句包含在一个try块和一个catch块中。try块中的代码包含了正常情况下执行的代码。异常被catch所捕获。catch中的代码被执行以处理异常。
 * 异常就是一个从异常类所创建的对象。异常的根类是java.lang.Throwable.所有的Java异常类都直接或者间接地继承自Throwable。***可以通过继承Exception或者Exception的子类来创建自己的异常类***
-
+* 分为免检异常和必检异常，必检异常是说编译器会强制程序员检查并通过catch块处理他们，或者在方法头进行声明。
+* 捕获异常即try-catch语句   
+* 声明异常 `puvlic void method2() throws Exception{ any code  }`   其中的throw**s**即用于声明异常，声明异常来表明方法**可能会**抛出的异常。如果方法可能会抛出多个异常，就可以在关键字throws后添加一个用逗号分隔的异常列表  
+`public void myMethod() throws Exception1,Exception2,Exception3,....,ExceptionN` 
+* **如果父类中的方法没有声明异常，那么在子类重写时就不能声明异常**
+* 抛出异常 `throw new Exception（）`     其中throw即用于抛出异常,抛出异常有两种表达形式：
+```
+ IllegalArgumentException ex = 
+  new IllegalArgumentException("Wrong Argument");
+ throw ex;
+```
+ `throw new IllegalArgumentException("Wrong Argument");`
+ * ***JavaAPI中的每个异常类至少有两个构造方法： 一个无参构造方法和一个带有可以描述这个异常的String参数的构造方法***
+ * 捕获异常  利用**调用栈**   一直向上查，**上层方法引用下层方法**，如果最终异常类型没有被捕获，则程序终止。
+ * 各种异常类可以从一个共同的父类中派生。如果一个catch块可以捕获一个父类的异常对象，它就能捕获那个父类的所有子类的异常对象。只是判断应先判断是否是子类专属的异常类型。
+ * 从JDK7开始一个catch就可以捕获多种异常
+ ```
+ catch (Exception1|Exception2|Exception3|...|Exceptionk ex){
+      some code for handling these Exception
+ }
+ ```
