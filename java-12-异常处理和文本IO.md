@@ -28,3 +28,7 @@
       some code for handling these Exception
  }
  ```
+* 1.try-catch:可以对异常进行处理，提高软件的健壮性  2.JVM：运行错误则直接崩溃
+* 异常处理器使用System.out.println(ex)打印一个有关异常的短消息ex.toString().
+* 如果try模块中发生异常，try模块剩余代码将不会被执行；如果catch模块中发生了异常，catch模块剩余代码将不会被执行，而是跳过catch模块去执行后面的部分。
+* **finally语句** 在任何情况下，finally块中的代码都会执行，不论try块中死否出现异常或者被捕获。***即使在到达finally块之前有一个return语句，finally块还是会执行***   **使用finally块时可以略去catch块。
