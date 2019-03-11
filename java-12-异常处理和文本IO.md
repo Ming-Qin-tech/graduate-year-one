@@ -55,7 +55,26 @@ try{
  4. ArithmeticException 除数为零
  5. NullPointerException 空指针异常
  * try块里面都是可能会出错，需要加强健壮性的代码，通过catch捕捉。
- 
+ * **instanceof**是和**catch (FileNotFoundException | ParseException e)** 这类在一个catch中捕捉多种异常使用的，见代码如下
+
+```
+//未使用instanceof
+catch (FileNotFoundException e) {
+            System.out.println("d:/LOL.exe不存在");
+            e.printStackTrace();
+        } catch (ParseException e) {
+            System.out.println("日期格式解析错误");
+            e.printStackTrace();
+```
+
+```
+//使用instanceof
+ catch (FileNotFoundException | ParseException e) {
+            if (e instanceof FileNotFoundException)
+                System.out.println("d:/LOL.exe不存在");
+            if (e instanceof ParseException)
+                System.out.println("日期格式解析错误");
+ ```
  
  
  
