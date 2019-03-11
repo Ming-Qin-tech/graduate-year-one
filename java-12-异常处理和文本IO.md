@@ -74,6 +74,7 @@ catch (FileNotFoundException e) {
                 System.out.println("d:/LOL.exe不存在");
             if (e instanceof ParseException)
                 System.out.println("日期格式解析错误");
+            e.printStackTrace();
  ```
  
  
