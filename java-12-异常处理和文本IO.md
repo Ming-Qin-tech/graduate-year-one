@@ -46,6 +46,46 @@ try{
  ```
  *  **链式异常**：与另一个异常一起抛出一个异常，构成了链式异常。上面的代码块例子**只是**重新抛出了最初的异常。链式异常是将新异常（带有附加信息）和最初异常一起抛出。
  * 程序闪退，就是异常处理做的不好。
+ 
+## File类
+* 绝对文件名：包含路径在内  平常所说文件名皆为相对文件名。
+* Windows中目录分隔符为“\”,而在java中分隔符用“\\”,而在创建过程中new file("image/us.gif"),时使用的“/”分隔符。
+* 在创建文件过程中，尽量不要使用绝对文件名作为创建文件的名字，因为这样违背了JVM的各种平台的可适用性，这样**只能在windows上运行**。
+* 构建一个File实例并不会在机器上创建一个文件，不管文件是否存在，都可以创建任意文件名的File实例。可以调用File实例判断文件是否存在。
+* 必须使用close（）方法关闭文件。如果没有调用该方法，数据就不能正确的保存在文件中。
+```
+File file = new File("Score.txt");
+		if(file.exists()){
+			System.out.println("File is already exists");
+			System.exit(1);
+		}
+		
+		PrintWriter output = new PrintWriter(file);
+		
+		output.print("John T Smith");
+		output.println(90);
+		output.print("Eric K Jones ");
+		output.println(85);
+		
+		output.close();
+```
+* 对比：
+```
+import java.util.Scanner;
+Scanner input = new Scanner(System.in);
+int x = input.nextInt();
+```
+```
+import java.io.PrintWriter;
+import java.io.File;
+File file = new File("scores.txt");
+PrintWriter output = new PrintWriter(filename);
+output.print("xxx");
+output.close();
+```
+
+ 
+ 
  ### HOW2J.com  异常
  * try-catch异常捕捉机制提高了程序的健壮性，以前所见过的程序闪退即是这方面做的不好。
  * 步骤二：罗列到目前为止所接触过的所有异常(面试常问)： 数组超限，输入类型不匹配，待打开的文件不存在，做除法除数为零。
