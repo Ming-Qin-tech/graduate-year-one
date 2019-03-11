@@ -112,6 +112,10 @@ Scanner input = new Scanner(System.in);
 //从文件读取
 Scanner input = new Scanner(new File(filename));
 ```
+```
+//从网页上读取
+Scanner input = new Scanner(url.openStream());
+```
 * delimiter分隔符
 * next()方法读取一个由分隔符分隔的字符串，但是nextLine（）读取的是一个以换行符结束的行。
 * 不应该在一个基于标记的输入之后再使用一个基于行的输入。如果输入34，再回车，再输入567，则intValue为34，line只得到了一个回车符。
@@ -164,6 +168,11 @@ public class ReplaceText {
 
 }
 ```
+#### 从Web上读取数据
+* 需要使用java.net.URL构造方法
+* 输入URL必须输入http:**//**(双斜杠)
+* 网页上读入  Scanner input = new Scanner(url.openStream());
+* 可能发生的两种异常：1.MalformedURLException 2.IOException
 
 
 
