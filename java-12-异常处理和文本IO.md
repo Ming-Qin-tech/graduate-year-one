@@ -17,6 +17,7 @@
  IllegalArgumentException ex = 
   new IllegalArgumentException("Wrong Argument");
  throw ex;
+ 
 ```
  `throw new IllegalArgumentException("Wrong Argument");`
  * ***JavaAPI中的每个异常类至少有两个构造方法： 一个无参构造方法和一个带有可以描述这个异常的String参数的构造方法***
@@ -32,3 +33,37 @@
 * 异常处理器使用System.out.println(ex)打印一个有关异常的短消息ex.toString().
 * 如果try模块中发生异常，try模块剩余代码将不会被执行；如果catch模块中发生了异常，catch模块剩余代码将不会被执行，而是跳过catch模块去执行后面的部分。
 * **finally语句** 在任何情况下，finally块中的代码都会执行，不论try块中死否出现异常或者被捕获。***即使在到达finally块之前有一个return语句，finally块还是会执行***   **使用finally块时可以略去catch块。
+* 在代码中，应该在什么时候使用try-catch语句呢？ 当必须处理不可预料的错误状况时应该使用它。不要使用try-catch语句做简单的逻辑测试，不要用于处理简单可预料的情况。
+* **重新抛出异常**如果异常处理器并不能处理一个异常，或者只是简单地希望它的调用者注意到该异常，Java允许该异常处理器重新抛出异常。 如下面的语句throw ex重新抛出异常给调用者，以便调用者的其他处理器获得处理异常ex的机会。
+```
+try{
+ statements;
+ }
+ catch (TheException ex){
+  perform operations before exists;
+  throw ex;
+ }
+ ```
+ *  **链式异常**：与另一个异常一起抛出一个异常，构成了链式异常。上面的代码块例子**只是**重新抛出了最初的异常。链式异常是将新异常（带有附加信息）和最初异常一起抛出。
+ * 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
