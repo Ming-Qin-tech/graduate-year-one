@@ -92,6 +92,7 @@ PrintWriter output = new PrintWriter(file);
 output.print("John T Smith");	
 output.close();
 ```
+* 没有必要关闭输入文件，但是这是一种释放被文件占用的资源的好办法。
 
 ```
 运用try（声明和创建资源）{
@@ -111,7 +112,14 @@ Scanner input = new Scanner(System.in);
 //从文件读取
 Scanner input = new Scanner(new File(filename));
 ```
-
+* delimiter分隔符
+* next()方法读取一个由分隔符分隔的字符串，但是nextLine（）读取的是一个以换行符结束的行。
+* 不应该在一个基于标记的输入之后再使用一个基于行的输入。如果输入34，再回车，再输入567，则intValue为34，line只得到了一个回车符。
+```
+Scanner input = new Scanner(System.in);
+int intValue = input.nextInt();
+String line = input.nextLine();
+```
 
 
  
