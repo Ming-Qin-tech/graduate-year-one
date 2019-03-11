@@ -48,6 +48,8 @@ try{
  * 程序闪退，就是异常处理做的不好。
  
 ## File类
+### 使用PrintWritter进行写文件
+* 凡是设计IO的都要进行强制进行异常声明  public static void main(String[] args) throws java.io.IOException {。
 * 绝对文件名：包含路径在内  平常所说文件名皆为相对文件名。
 * Windows中目录分隔符为“\”,而在java中分隔符用“\\”,而在创建过程中new file("image/us.gif"),时使用的“/”分隔符。
 * 在创建文件过程中，尽量不要使用绝对文件名作为创建文件的名字，因为这样违背了JVM的各种平台的可适用性，这样**只能在windows上运行**。
@@ -83,6 +85,34 @@ PrintWriter output = new PrintWriter(filename);
 output.print("xxx");
 output.close();
 ```
+* 利用try-with-resource可以自动关闭文件，省略了file.close();
+```
+//运用close（）
+PrintWriter output = new PrintWriter(file);		
+output.print("John T Smith");	
+output.close();
+```
+
+```
+运用try（声明和创建资源）{
+  使用资源处理文件
+ }
+try(PrintWriter output = new PrintWriter(file);){
+	output.print("lalla");
+}
+```
+### 利用Scanner进行读文件
+* 对比：
+```
+//从键盘读取
+Scanner input = new Scanner(System.in);
+```
+```
+//从文件读取
+Scanner input = new Scanner(new File(filename));
+```
+
+
 
  
  
