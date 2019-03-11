@@ -120,6 +120,50 @@ Scanner input = new Scanner(System.in);
 int intValue = input.nextInt();
 String line = input.nextLine();
 ```
+* 下面程序注意创建新的文本文档的代码是PrintWriter output = new PrintWriter(targetFile);
+* 还有一点非常重要，就是对String s1 = input.nextLine();
+String s2 = s1.replaceAll(args[2], args[3]);两行代码的理解，s1读取源文件中的一行，replaceAll(args[2], args[3])表示将源文件的当前读取行的args[2]子字符串被替换为args[3]新的字符串为s2.若s1中无args[2]子字符串，则为将源文件一模一样的复制到目标文件。
+* 下面问题还得出一件事：如args[n]数组中的任何一个元素都可以表示文件。.
+```
+//ReplaceText问了方宇聪海
+import java.io.*;
+import java.util.*;
+public class ReplaceText {
+
+	public static void main(String[] args) throws Exception{
+		// TODO Auto-generated method stub
+		if(args.length != 4){
+			System.out.println("Usage: java ReplaceText sourceFile targetFile oldStr newStr");
+			System.exit(1);
+		}
+		
+		File sourceFile = new File(args[0]);
+		if(!sourceFile.exists()){
+			System.out.println("Sourcefile " + args[0] + "already exists");
+			System.exit(2);
+		}
+		
+		File targetFile = new File(args[1]);
+		if(targetFile.exists()){
+			System.out.println("targetfile " + args[1] + "already exists");
+			System.exit(3);
+		}
+		
+		try(
+				Scanner input = new Scanner(sourceFile);
+				PrintWriter output = new PrintWriter(targetFile);
+		)
+	{
+			while(input.hasNext()){
+				String s1 = input.nextLine();
+				String s2 = s1.replaceAll(args[2], args[3]);
+				output.println(s2);
+			}
+		}
+	}
+
+}
+```
 
 
 
