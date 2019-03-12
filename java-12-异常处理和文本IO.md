@@ -172,7 +172,7 @@ public class ReplaceText {
 * 需要使用java.net.URL构造方法
 * 输入URL必须输入http:**//**(双斜杠)
 * 网页上读入  Scanner input = new Scanner(url.openStream());
-* 可能发生的两种异常：1.MalformedURLException 2.IOException
+* 可能发生的两种异常：1.MalformedURLException（URL 协议格式或者路径错误  或者解析错误） 2.IOException
 
 
 
@@ -186,6 +186,7 @@ public class ReplaceText {
  3. ClassCastException 类型转换异常
  4. ArithmeticException 除数为零
  5. NullPointerException 空指针异常
+ 6. MalformedURLException（URL 协议格式或者路径错误  或者解析错误）
  * try块里面都是可能会出错，需要加强健壮性的代码，通过catch捕捉。
  * **instanceof**是和**catch (FileNotFoundException | ParseException e)** 这类在一个catch中捕捉多种异常使用的，见代码如下
 
